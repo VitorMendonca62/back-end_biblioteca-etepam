@@ -20,8 +20,8 @@ module.exports = {
       estrelas,
       quantidade,
       data_entregue,
-      vezes_pego=0,
-      proprietario=" ",
+      vezes_pego = 0,
+      proprietario,
       status = "Livre",
     } = await req.body;
     const path = await req.file.filename;
@@ -47,4 +47,16 @@ module.exports = {
     const book = await Book.findByPk(id);
     return res.status(200).json(book);
   },
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    Book.destroy({ where: { id } })
+    const book = await Book.findByPk(id);
+    res.json(book)
+  },
+
+  async update(req,res) {
+    // {titulo,autor,sinopse,}
+  }
 };

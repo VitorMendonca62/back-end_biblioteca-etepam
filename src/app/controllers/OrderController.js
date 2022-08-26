@@ -23,5 +23,16 @@ module.exports = {
 
     res.json(book);
   },
-  async show(req, res) {},
+  async show(req, res) {}, 
+
+  async delete(req, res) {
+    const idBook = req.params.id;
+
+    const book = await Book.findByPk(idBook);
+    book.proprietario = null;
+    book.status = "Livre";
+    await book.save();
+    res.json(book)
+  }, 
+
 };

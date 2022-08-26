@@ -6,7 +6,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    let admin = false;
+    let admin = true;
     const {
       nome,
       email,

@@ -11,7 +11,7 @@ class Book extends Model {
       quantidade: DataTypes.INTEGER,
       vezes_pego: DataTypes.INTEGER,
       status: DataTypes.STRING,
-      // data_entregue: DataTypes.DATE,
+      data_entregue: DataTypes.DATE,
       path: DataTypes.STRING,
       url: {
         type: DataTypes.VIRTUAL,

@@ -29,8 +29,11 @@ routes.post(
   );
   routes.get("/books/get-books", BookController.index);
   routes.get("/books/:id", BookController.show);
+  routes.delete("/books/:id/delete-books", BookController.delete);
   
   routes.post("/books/:id/order", OrderController.store)
-  routes.get("/a", OrderController.index)
+  routes.get("/book/orders", OrderController.index)
+  routes.delete("/books/:id/order", OrderController.delete)
+  
   
 module.exports = routes;

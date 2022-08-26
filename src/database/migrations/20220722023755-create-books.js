@@ -43,7 +43,6 @@ module.exports = {
       },
       proprietario: {
         type: Sequelize.JSON,
-        allowNull: false,
       },
 
       data_entregue: {
