@@ -51,12 +51,26 @@ module.exports = {
   async delete(req, res) {
     const { id } = req.params;
 
-    Book.destroy({ where: { id } })
+    Book.destroy({ where: { id } });
     const book = await Book.findByPk(id);
-    res.json(book)
+    res.json(book);
   },
 
-  async update(req,res) {
-    // {titulo,autor,sinopse,}
-  }
+  async update(req, res) {
+    const { titulo, autor, sinopse, quantidade } = req.body;
+    const { id } = req.params;
+
+    const book = await Book.findByPk(id);
+
+    await book.update(
+      {
+        titulo,
+        autor,
+        sinopse,
+        quantidade,
+      },
+      { where: { id } }
+    );
+    res.json(book);
+  },
 };

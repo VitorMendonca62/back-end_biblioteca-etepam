@@ -29,6 +29,7 @@ routes.post(
   );
   routes.get("/books/get-books", BookController.index);
   routes.get("/books/:id", BookController.show);
+  routes.put("/books/:id", BookController.update);
   routes.delete("/books/:id/delete-books", BookController.delete);
   
   routes.post("/books/:id/order", OrderController.store)
