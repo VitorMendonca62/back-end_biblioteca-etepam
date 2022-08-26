@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const authConfig = require("../../config/auth");
 const jwt = require("jsonwebtoken");
+
 module.exports = {
   async store(req, res) {
     const { matricula, senha } = await req.body;
@@ -14,16 +15,20 @@ module.exports = {
     }
 
     if (isUser && (await isUser.verificarSenha(senha))) {
-      res.json({
+      const token = jwt.sign(
+        { id: isUser.id, name: isUser.nome, matricula: isUser.matricula },
+        authConfig.secret,
+        { expiresIn: authConfig.expiresIn }
+      );
+      req.headers.authorization = token;
+
+      return res.json({
         id: isUser.id,
         matricula,
         nome: isUser.nome,
         admin: isUser.admin,
-        token: jwt.sign(
-          { id: isUser.id, name: isUser.nome },
-          authConfig.secret,
-          { expiresIn: authConfig.expiresIn }
-        ),
+        auth: true,
+        token,
       });
     } else {
       return matriculaOuSenhaIncorreto();

@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      estado: {
+      status: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -39,6 +39,15 @@ module.exports = {
       },
       vezes_pego: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      proprietario: {
+        type: Sequelize.JSON,
+        allowNull: false,
+      },
+
+      data_entregue: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       created_at: {

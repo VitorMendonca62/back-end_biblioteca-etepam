@@ -1,4 +1,5 @@
 const Book = require("../models/Book");
+const User = require("../models/User");
 
 module.exports = {
   async index(req, res) {
@@ -7,36 +8,43 @@ module.exports = {
   },
 
   async store(req, res) {
+    const { admin: isAdmin } = await User.findByPk(req.userId);
+
+    if (!isAdmin) {
+      return res.status(404).json();
+    }
     const {
       titulo,
       autor,
       sinopse,
       estrelas,
-      estado = "Livre",
+      quantidade,
+      data_entregue,
+      vezes_pego=0,
+      proprietario=" ",
+      status = "Livre",
     } = await req.body;
     const path = await req.file.filename;
-    const dados = [titulo, autor, estrelas, sinopse, estado /*path*/];
+    const dados = [titulo, autor, estrelas, sinopse, status, path];
 
     const book = await Book.create({
       titulo,
       autor,
       sinopse,
       estrelas,
-      estado,
+      status,
+      quantidade,
+      vezes_pego,
+      data_entregue,
+      proprietario,
       path,
     });
     return res.status(201).json({ msg: "Livro criado com suceso" });
   },
 
   async show(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
     const book = await Book.findByPk(id);
     return res.status(200).json(book);
   },
 };
-
-// dados.forEach((dado) => {
-//   if (!dado || typeof dado === undefined || dado === null) {
-//     erros.push("erro");
-//   }
-// });

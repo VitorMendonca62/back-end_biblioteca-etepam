@@ -6,10 +6,12 @@ class Book extends Model {
       titulo: DataTypes.STRING,
       autor: DataTypes.STRING,
       sinopse: DataTypes.STRING,
+      proprietario: DataTypes.JSON,
       estrelas: DataTypes.INTEGER,
       quantidade: DataTypes.INTEGER,
       vezes_pego: DataTypes.INTEGER,
-      estado: DataTypes.STRING,
+      status: DataTypes.STRING,
+      // data_entregue: DataTypes.DATE,
       path: DataTypes.STRING,
       url: {
         type: DataTypes.VIRTUAL,

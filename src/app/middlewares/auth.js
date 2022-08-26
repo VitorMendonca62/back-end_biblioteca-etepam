@@ -3,7 +3,6 @@ const authConfig = require("../../config/auth");
 
 module.exports = (req, res, next) => {
   const authToken = req.headers.authorization;
-  console.log(req.headers);
   if (!authToken) {
     return res.status(401).json({ error: "Token não fornecido" });
   }

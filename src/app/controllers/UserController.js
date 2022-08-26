@@ -19,7 +19,6 @@ module.exports = {
       curso,
     } = await req.body;
 
-
     const isUser =
       (await User.findOne({ where: { matricula } })) ||
       (await User.findOne({ where: { email } }));
@@ -39,7 +38,7 @@ module.exports = {
         curso,
         admin,
       });
-      return res.status(201).json({ msg: "Usuário criado com suceso" });
+      return res.status(201).json({ msg: "Usuário criado com sucesso" });
     }
 
   },
