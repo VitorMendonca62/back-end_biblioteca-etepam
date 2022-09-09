@@ -22,6 +22,7 @@ module.exports = {
       data_entregue,
       vezes_pego = 0,
       proprietario,
+      categoria,
       status = "Livre",
     } = await req.body;
     const path = await req.file.filename;
@@ -37,6 +38,7 @@ module.exports = {
       vezes_pego,
       data_entregue,
       proprietario,
+      categoria,
       path,
     });
     return res.status(201).json({ msg: "Livro criado com suceso" });

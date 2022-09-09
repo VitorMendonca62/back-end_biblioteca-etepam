@@ -5,13 +5,14 @@ class Book extends Model {
     super.init({
       titulo: DataTypes.STRING,
       autor: DataTypes.STRING,
+      categoria: DataTypes.STRING,
       sinopse: DataTypes.STRING,
       proprietario: DataTypes.JSON,
       estrelas: DataTypes.INTEGER,
       quantidade: DataTypes.INTEGER,
       vezes_pego: DataTypes.INTEGER,
       status: DataTypes.STRING,
-      data_entregue: DataTypes.DATE,
+      data_entregue: DataTypes.STRING,
       path: DataTypes.STRING,
       url: {
         type: DataTypes.VIRTUAL,

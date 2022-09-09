@@ -14,27 +14,31 @@ const UserController = require("./app/controllers/UserController");
 const SessionController = require("./app/controllers/SessionController");
 const OrderController = require("./app/controllers/OrderController");
 
-routes.post("/auth/login", SessionController.store);
+routes.post("/auth/login", SessionController.store); // Sistema de login
 
-routes.post("/auth/add-user", UserController.store);
+routes.post("/auth/add-user", UserController.store); // Sistema de cadastro
 
 
-routes.use(authMiddleware);
-routes.get("/auth/get-users", UserController.index);
+routes.use(authMiddleware); // Autenticacao
+
+routes.get("/auth/get-users", UserController.index); // Mostrar todos os usuarios
 
 routes.post(
   "/books/add-book",
-  upload.single("capaLivro"),
+  upload.single("capaLivro"), // Nome que vem do client
   BookController.store
-  );
-  routes.get("/books/get-books", BookController.index);
-  routes.get("/books/:id", BookController.show);
-  routes.put("/books/:id", BookController.update);
-  routes.delete("/books/:id/delete-books", BookController.delete);
+  ); // Cadastrar livro
+
+  routes.get("/books/get-books", BookController.index); // Mostrar todos os livros
+  routes.get("/books/:id", BookController.show); // Mostrar um livro pelo id, como /books/1
+  routes.put("/books/:id", BookController.update); // Editar o livro
+  routes.delete("/books/:id/delete-books", BookController.delete); // Deletar o livro
   
-  routes.post("/books/:id/order", OrderController.store)
-  routes.get("/book/orders", OrderController.index)
-  routes.delete("/books/:id/order", OrderController.delete)
+  routes.post("/books/:id/order", OrderController.store) // Pedir algum livro
+  routes.get("/book/orders", OrderController.index) // Mostrar todos as ordens
+  // routes.put("/books/:id/order", OrderController.update) // Editar uma ordem
+  routes.delete("/books/:id/order", OrderController.delete) // Deletar uma ordem
+
   
   
 module.exports = routes;

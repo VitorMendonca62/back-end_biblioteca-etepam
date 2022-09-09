@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      categoria: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       sinopse: {
         type: Sequelize.STRING(2000),
         allowNull: false,
@@ -44,10 +48,8 @@ module.exports = {
       proprietario: {
         type: Sequelize.JSON,
       },
-
       data_entregue: {
-        type: Sequelize.DATE,
-        allowNull: false,
+        type: Sequelize.STRING,
       },
       created_at: {
         type: Sequelize.DATE,
